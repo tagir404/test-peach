@@ -385,7 +385,8 @@ onMounted(() => {
         &__header-dropdown-col-title {
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 5px;
+            width: min-content;
 
             &::after {
                 content: '';
