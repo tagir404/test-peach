@@ -1,40 +1,14 @@
 <script setup lang="ts">
 import img1 from '../assets/img/corporate_life/1.jpg'
-import img1mob from '../assets/img/corporate_life/1-mob.jpg'
 import img2 from '../assets/img/corporate_life/2.jpg'
-import img2mob from '../assets/img/corporate_life/2-mob.jpg'
 import img3 from '../assets/img/corporate_life/3.jpg'
-import img3mob from '../assets/img/corporate_life/3-mob.jpg'
 import img4 from '../assets/img/corporate_life/4.jpg'
-import img4mob from '../assets/img/corporate_life/4-mob.jpg'
 import img5 from '../assets/img/corporate_life/5.jpg'
-import img5mob from '../assets/img/corporate_life/5-mob.jpg'
 import SwiperArrow from './icons/SwiperArrow.vue'
 import { ref, useTemplateRef } from 'vue'
 import { type SwiperContainer } from 'swiper/element'
 
-const slides = [
-    {
-        desktop: img1,
-        mobile: img1mob
-    },
-    {
-        desktop: img2,
-        mobile: img2mob
-    },
-    {
-        desktop: img3,
-        mobile: img3mob
-    },
-    {
-        desktop: img4,
-        mobile: img4mob
-    },
-    {
-        desktop: img5,
-        mobile: img5mob
-    }
-]
+const slides = [img1, img2, img3, img4, img5]
 
 const swiperRef = useTemplateRef<SwiperContainer>('swiper')
 const swiperActiveIndex = ref(0)
@@ -76,20 +50,15 @@ const onSwiperSlideChange = (e: CustomEvent) => {
             @swiperslidechange="onSwiperSlideChange"
         >
             <swiper-slide
-                v-for="(img, i) in slides"
+                v-for="(src, i) in slides"
                 :key="i"
             >
-                <picture>
-                    <source
-                        :srcset="img.mobile"
-                        media="(max-width: 500px)"
-                    />
-                    <img
-                        :src="img.desktop"
-                        alt="Тест"
-                        class="corporate-life__slide-img"
-                    />
-                </picture>
+                <img
+                    :src
+                    alt="Тест"
+                    class="corporate-life__slide-img"
+                    loading="lazy"
+                />
             </swiper-slide>
         </swiper-container>
     </section>

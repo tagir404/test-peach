@@ -48,7 +48,7 @@ const isOpen = ref(false)
     position: relative;
     overflow: hidden;
 
-    @media (hover: hover) {
+    @media (min-width: 768px) {
         &:hover {
             .business-card {
                 &__info {

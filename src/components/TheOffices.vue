@@ -351,6 +351,7 @@ onMounted(() => {
 
         &__header-menu {
             gap: 6px;
+            align-self: flex-start;
         }
 
         &__header-menu-text {
