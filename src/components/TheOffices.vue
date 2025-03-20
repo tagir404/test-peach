@@ -259,6 +259,8 @@ onMounted(() => {
 
     &__tab-input {
         position: absolute;
+        top: 0;
+        left: 0;
         opacity: 0;
 
         &:checked ~ {
