@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import CompensationItem from './CompensationItem.vue'
 import IconBirthday from './icons/IconBirthday.vue'
 import IconDMS from './icons/IconDMS.vue'
 import IconHandshake from './icons/IconHandshake.vue'
@@ -51,16 +52,11 @@ const motivationItems = [
         <div class="compensation__head">
             <h2 class="compensation__title">Компенсационный пакет</h2>
             <div class="compensation__list">
-                <div
+                <CompensationItem
                     v-for="item in packages"
                     :key="item.title"
-                    class="compensation__item"
-                >
-                    <div class="compensation__item-icon">
-                        <component :is="item.icon" />
-                    </div>
-                    <p class="compensation__item-title">{{ item.title }}</p>
-                </div>
+                    :item
+                />
             </div>
         </div>
         <hr class="compensation__divider" />
@@ -69,16 +65,11 @@ const motivationItems = [
                 Программа дополнительной мотивации <br /><span>доплата 12% от суммы</span>
             </h3>
             <div class="compensation__program-list">
-                <div
+                <CompensationItem
                     v-for="item in motivationItems"
                     :key="item.title"
-                    class="compensation__item"
-                >
-                    <div class="compensation__item-icon">
-                        <component :is="item.icon" />
-                    </div>
-                    <p class="compensation__item-title">{{ item.title }}</p>
-                </div>
+                    :item
+                />
             </div>
         </div>
     </section>
@@ -109,30 +100,10 @@ const motivationItems = [
         display: flex;
         gap: 16px;
         justify-content: center;
-    }
 
-    &__item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        width: 178px;
-    }
-
-    &__item-icon {
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__item-title {
-        font-size: 18px;
-        line-height: 1.1;
-        text-align: center;
+        .compensation-item {
+            width: 178px;
+        }
     }
 
     &__divider {
@@ -181,23 +152,10 @@ const motivationItems = [
         &__list {
             flex-wrap: wrap;
             gap: 25px 10px;
-        }
 
-        &__item {
-            width: 120px;
-        }
-
-        &__item-icon {
-            width: 80px;
-            height: 80px;
-
-            svg {
-                width: 35px;
+            .compensation-item {
+                width: 120px;
             }
-        }
-
-        &__item-title {
-            font-size: 16px;
         }
 
         &__divider {
@@ -217,7 +175,7 @@ const motivationItems = [
             flex-wrap: wrap;
             gap: 25px;
 
-            .compensation__item {
+            .compensation-item {
                 width: 80px;
             }
         }
